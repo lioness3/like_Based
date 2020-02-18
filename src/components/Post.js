@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import './Post.css';
-
+import Moment from 'moment';
 
 
 
@@ -16,14 +16,18 @@ const [dislikeCounter, setDislikeCounter] = useState(0);
         <p>{props.content}</p>
         <p><button onClick={() => setLikeCounter(likeCounter + 1)}   style={{background:'inherit',border:'none'}}> 👍</button><span style={{color:'yellow'}}> {likeCounter}</span></p>
         <p><button onClick={() => setDislikeCounter(dislikeCounter + 1)}  style={{background:'inherit',border:'none'}}> 👎</button><span style={{color:'yellow'}}>{dislikeCounter}</span></p>
+              <h4>{displayTimeOpen(props.timeOpen)} ago</h4>
       </div>
     </div>
   );
 }
-
+function displayTimeOpen(timeOpen) {
+ return timeOpen.from(new Moment(), true);
+}
 Post.propTypes = {
   author: PropTypes.string,
-  content: PropTypes.string
+  content: PropTypes.string,
+  timeOpen: PropTypes.instanceOf(Moment)
 };
 
 export default Post;

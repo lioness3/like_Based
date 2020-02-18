@@ -10,6 +10,7 @@ function RedditDisplay(props) {
       {props.redditdisplay.map((reddit) =>
         <Post author={reddit.author}
           content={reddit.content}
+          timeOpen={reddit.timeOpen}
           key={reddit.id}/>
       )}
     </div>

@@ -2,14 +2,15 @@ import React from 'react';
 import{ Link } from'react-router-dom';
 import { v4 } from 'uuid';
 import PropTypes from 'prop-types';
-import './PostForm.css'
+import './PostForm.css';
+import Moment from 'moment';
 
 function PostForm(props) {
   let _author = null;
   let _content = null;
   function handleNewPost(event) {
     event.preventDefault();
-    props.onNewPost({author: _author.value, content: _content.value, id: v4()});
+    props.onNewPost({author: _author.value, content: _content.value, id: v4(), timeOpen: new Moment()});
     _author.value = '';
     _content.value = '';
   }
